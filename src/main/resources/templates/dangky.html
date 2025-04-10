@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" th:href="@{/dangky.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="register-container">
+    <h2>Đăng ký tài khoản</h2>
+    <form onsubmit="event.preventDefault; dangky()" th:object="${taikhoan}">
+        <input type="text" th:field="*{tk}" id="username" placeholder="Tên đăng nhập" required>
+        <input type="password" th:field="*{mk}" id="password" placeholder="Mật khẩu" required>
+        <input type="password" th:field="*{mk}" id="confirm-password" placeholder="Xác nhận mật khẩu" required>
+        <select th:field="*{vaitro}" id="vaitro" required>
+            <option value="" disabled selected>Chọn vai trò</option>
+            <option value="user">Khách hàng</option>
+            <option value="user">Nhân viên</option>
+        </select>
+        <button type="submit">Tạo tài khoản</button>
+    </form>
+    <p class="note">Đã có tài khoản? <a th:href="@{/taikhoan/dangnhap}">Đăng nhập</a></p>
+</div>
+	<script th:src="@{/dangky.js}"></script>
+</body>
+</html>

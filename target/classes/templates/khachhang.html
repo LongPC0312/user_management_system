@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang Khách Hàng</title>
+    <link rel="stylesheet" th:href="@{/khachhang.css}">
+</head>
+<body>
+<div class="dashboard">
+    <h1>Trang Khách Hàng</h1>
+
+    <a th:href="@{/logout}" class="btn1">Đăng xuất</a>
+
+    <!-- Thông tin cá nhân -->
+    <h2>Thông tin của bạn</h2>
+    <table>
+        <tbody>
+            <tr><th>Mã KH</th><td th:text="${khachHang.maKH}"></td></tr>
+            <tr><th>Họ tên</th><td th:text="${khachHang.hTen}"></td></tr>
+            <tr><th>Địa chỉ</th><td th:text="${khachHang.dchi}"></td></tr>
+            <tr><th>SĐT</th><td th:text="${khachHang.sdt}"></td></tr>
+            <tr><th>Ngày sinh</th><td th:text="${khachHang.ngaySinh}"></td></tr>
+            <tr><th>Ngày đăng ký</th><td th:text="${khachHang.ngayDK}"></td></tr>
+            <tr><th>Tổng doanh số</th><td th:text="${khachHang.doanhSo}"></td></tr>
+        </tbody>
+    </table>
+
+    <!-- Danh sách hóa đơn -->
+    <h2>Lịch sử mua hàng</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Mã HĐ</th>
+                <th>Ngày giao dịch</th>
+                <th>Tổng giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="hd : ${listHoaDon}">
+                <td th:text="${hd.maHD}"></td>
+                <td th:text="${hd.ngayGD}"></td>
+                <td th:text="${hd.tongGia}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script th:src="@{/khachhang.js}"></script>
+</body>
+</html>

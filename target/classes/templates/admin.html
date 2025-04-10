@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang Admin</title>
+  <link rel="stylesheet" th:href="@{/admin.css}">
+</head>
+<body>
+  <div class="dashboard">
+    <h1>Quản trị hệ thống</h1>
+
+    <!-- Sidebar menu -->
+    <div class="sidebar">
+      <ul class="nav-list">
+        <!-- Nhân viên -->
+        <li class="nav-item">
+          <a href="#" class="nav-link" onclick="toggleDropdown('employee-dropdown')">
+            <i class="fas fa-users"></i> Nhân viên
+            <i class="dropdown-icon fas fa-chevron-down"></i>
+          </a>
+          <ul id="employee-dropdown" class="dropdown-menu">
+            <li><a href="#" onclick="loadCRUD('employee', 'create')">➕ Thêm mới</a></li>
+            <li><a href="#" onclick="loadCRUD('employee', 'read')">📋 Danh sách</a></li>
+            <li><a href="#" onclick="loadCRUD('employee', 'update')">✏️ Cập nhật</a></li>
+            <li><a href="#" onclick="loadCRUD('employee', 'delete')">🗑️ Xóa</a></li>
+          </ul>
+        </li>
+
+        <!-- Khách hàng -->
+        <li class="nav-item">
+          <a href="#" class="nav-link" onclick="toggleDropdown('customer-dropdown')">
+            <i class="fas fa-user-friends"></i> Khách hàng
+            <i class="dropdown-icon fas fa-chevron-down"></i>
+          </a>
+          <ul id="customer-dropdown" class="dropdown-menu">
+            <li><a href="#" onclick="loadCRUD('customer', 'create')">➕ Thêm mới</a></li>
+            <li><a href="#" onclick="loadCRUD('customer', 'read')">📋 Danh sách</a></li>
+            <li><a href="#" onclick="loadCRUD('customer', 'update')">✏️ Cập nhật</a></li>
+            <li><a href="#" onclick="loadCRUD('customer', 'delete')">🗑️ Xóa</a></li>
+          </ul>
+        </li>
+
+        <!-- Sản phẩm -->
+        <li class="nav-item">
+          <a href="#" class="nav-link" onclick="toggleDropdown('product-dropdown')">
+            <i class="fas fa-box-open"></i> Sản phẩm
+            <i class="dropdown-icon fas fa-chevron-down"></i>
+          </a>
+          <ul id="product-dropdown" class="dropdown-menu">
+            <li><a href="#" onclick="loadCRUD('product', 'create')">➕ Thêm mới</a></li>
+            <li><a href="#" onclick="loadCRUD('product', 'read')">📋 Danh sách</a></li>
+            <li><a href="#" onclick="loadCRUD('product', 'update')">✏️ Cập nhật</a></li>
+            <li><a href="#" onclick="loadCRUD('product', 'delete')">🗑️ Xóa</a></li>
+          </ul>
+        </li>
+
+        <!-- Hóa đơn -->
+        <li class="nav-item">
+          <a href="#" class="nav-link" onclick="toggleDropdown('invoice-dropdown')">
+            <i class="fas fa-file-invoice-dollar"></i> Hóa đơn
+            <i class="dropdown-icon fas fa-chevron-down"></i>
+          </a>
+          <ul id="invoice-dropdown" class="dropdown-menu">
+            <li><a href="#" onclick="loadCRUD('invoice', 'create')">➕ Thêm mới</a></li>
+            <li><a href="#" onclick="loadCRUD('invoice', 'read')">📋 Danh sách</a></li>
+            <li><a href="#" onclick="loadCRUD('invoice', 'update')">✏️ Cập nhật</a></li>
+            <li><a href="#" onclick="loadCRUD('invoice', 'delete')">🗑️ Xóa</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Content area -->
+    <div id="crud-content" class="content">
+      <p>Chọn một mục trong menu để thao tác.</p>
+    </div>
+
+    <a th:href="@{/taikhoan/dangnhap}" class="btn1">Đăng xuất</a>
+  </div>
+
+  <!-- Script dropdown -->
+  <script>
+    function toggleDropdown(id) {
+      const menus = document.querySelectorAll('.dropdown-menu');
+      menus.forEach(menu => {
+        if (menu.id !== id) menu.style.display = 'none';
+      });
+
+      const dropdown = document.getElementById(id);
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function loadCRUD(module, action) {
+      const content = document.getElementById('crud-content');
+      content.innerHTML = `
+        <h2>${action.toUpperCase()} - ${module.charAt(0).toUpperCase() + module.slice(1)}</h2>
+        <p>Đây là nội dung động cho chức năng <b>${action}</b> trong module <b>${module}</b>.</p>
+      `;
+    }
+  </script>
+</body>
+</html>
