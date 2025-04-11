@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Đăng ký</title>
-    <link rel="stylesheet" th:href="@{/dangky.css}">
+    <link rel="stylesheet" th:href="@{/css/taikhoan/dangky.css}">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,13 +15,13 @@
         <input type="password" th:field="*{mk}" id="confirm-password" placeholder="Xác nhận mật khẩu" required>
         <select th:field="*{vaitro}" id="vaitro" required>
             <option value="" disabled selected>Chọn vai trò</option>
-            <option value="user">Khách hàng</option>
-            <option value="user">Nhân viên</option>
+            <option value="Khách hàng">Khách hàng</option>
+            <option value="Nhân viên">Nhân viên</option>
         </select>
         <button type="submit">Tạo tài khoản</button>
     </form>
     <p class="note">Đã có tài khoản? <a th:href="@{/taikhoan/dangnhap}">Đăng nhập</a></p>
 </div>
-	<script th:src="@{/dangky.js}"></script>
+	<script th:src="@{/js/taikhoan/dangky.js}"></script>
 </body>
 </html>

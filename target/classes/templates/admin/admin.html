@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trang Admin</title>
-  <link rel="stylesheet" th:href="@{/admin.css}">
+  <link rel="stylesheet" th:href="@{/css/admin/admin.css}">
 </head>
 <body>
   <div class="dashboard">
@@ -20,8 +20,8 @@
             <i class="dropdown-icon fas fa-chevron-down"></i>
           </a>
           <ul id="employee-dropdown" class="dropdown-menu">
-            <li><a href="#" onclick="loadCRUD('employee', 'create')">➕ Thêm mới</a></li>
-            <li><a href="#" onclick="loadCRUD('employee', 'read')">📋 Danh sách</a></li>
+            <li><a th:href="@{/taikhoan/admin/viewnhanvien}" >➕ Thêm mới</a></li>
+            <li><a th:href="@{/taikhoan/admin/viewnhanvien}" >📋 Danh sách</a></li>
             <li><a href="#" onclick="loadCRUD('employee', 'update')">✏️ Cập nhật</a></li>
             <li><a href="#" onclick="loadCRUD('employee', 'delete')">🗑️ Xóa</a></li>
           </ul>

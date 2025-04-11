@@ -23,30 +23,15 @@ public class TaiKhoanController {
 	@Autowired TaiKhoanService taikhoanservice;
 	@GetMapping("/dangnhap")
 	public String dangnhap() {
-		return "dangnhap";
-	}
-	
-	@GetMapping("/admin")
-	public String admin() {
-		return "admin";
+		return "taikhoan/dangnhap";
 	}
 	
 	@GetMapping("/dangky")
 		public String dangky(Model model) {
 		model.addAttribute("taikhoan", new TaiKhoan());
-		return "dangky";
+		return "taikhoan/dangky";
 	}
-	
-	@GetMapping("/nhanvien")
-	public String nhanvien() {
-		return "nhanvien";
-	}
-	
-	@GetMapping("/khachhang")
-	public String khachhang() {
-		return "khachhang";
-	}
-	
+		
 	@PostMapping("/dangnhap")
 	@ResponseBody  // ✅ Trả về JSON thay vì chuyển trang
 	public Map<String, Object> kiemTraDangNhap(@RequestBody Map<String, String> request) {

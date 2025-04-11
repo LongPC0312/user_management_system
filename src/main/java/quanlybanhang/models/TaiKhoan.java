@@ -17,6 +17,11 @@ public class TaiKhoan {
 	private String mk;
 	@Column(name="VTro")
 	private String vaitro;
+	
+	public TaiKhoan() {
+		
+	}
+	
 	public long getId() {
 		return id;
 	}
