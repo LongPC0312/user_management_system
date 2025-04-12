@@ -1,23 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Danh sách nhân viên</title>
-    <link rel="stylesheet" th:href="@{/css/viewnhanvien/nhanvien.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/viewnhanvien.css}">
 </head>
 <body>
-    <div class="container">
-        <h1>Danh sách nhân viên</h1>
-
-        <div class="employee-grid">
-            <div class="employee-card" th:each="nv : ${nhanviens}">
-                <img th:src="@{/images/nhanvien.jpg}" alt="Ảnh nhân viên" class="avatar">
-                <h3 th:text="${nv.hten}">Tên nhân viên</h3>
-                <a th:href="@{'/admin/nhanvien/chitiet/' + ${nv.maNV}}">
-                    <button>Xem chi tiết</button>
-                </a>
-            </div>
-        </div>
-    </div>
+    <h1>Danh sách nhân viên</h1>
+    <table border="1">
+        <thead>
+            <tr>
+				<th>Avatar</th>
+                <th>Mã NV</th>
+                <th>Họ tên</th>
+                <th>SĐT</th>
+                <th>Ngày vào làm</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="nv : ${listNhanVien}">
+				<td><img th:src="${nv.avatarUrl}" width="150" height="150" /></td>
+                <td th:text="${nv.manv}"></td>
+                <td th:text="${nv.hoten}"></td>
+                <td th:text="${nv.sdt}"></td>
+                <td th:text="${nv.ngayvaolam}"></td>
+                
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>

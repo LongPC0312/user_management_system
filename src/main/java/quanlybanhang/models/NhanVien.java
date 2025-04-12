@@ -81,7 +81,10 @@ public class NhanVien {
 	}
 
 	public String getAvatarUrl() {
-		return avatarUrl;
+		if (avatarUrl == null || avatarUrl.isEmpty()) {
+	        this.avatarUrl = generateAvatarUrl(this.hoten);
+	    }
+	    return avatarUrl;
 	}
 
 	public void setAvatarUrl(String avatarUrl) {
