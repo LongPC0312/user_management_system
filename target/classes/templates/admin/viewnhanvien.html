@@ -6,28 +6,37 @@
     <link rel="stylesheet" th:href="@{/css/admin/viewnhanvien.css}">
 </head>
 <body>
-    <h1>Danh sách nhân viên</h1>
-    <table border="1">
-        <thead>
-            <tr>
-				<th>Avatar</th>
-                <th>Mã NV</th>
-                <th>Họ tên</th>
-                <th>SĐT</th>
-                <th>Ngày vào làm</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="nv : ${listNhanVien}">
-				<td><img th:src="${nv.avatarUrl}" width="150" height="150" /></td>
-                <td th:text="${nv.manv}"></td>
-                <td th:text="${nv.hoten}"></td>
-                <td th:text="${nv.sdt}"></td>
-                <td th:text="${nv.ngayvaolam}"></td>
-                
-            </tr>
-        </tbody>
-    </table>
+    <h1 style="text-align: center;">Danh sách nhân viên</h1>
+
+    <!-- Nút Thêm nhân viên -->
+    <div style="text-align: center; margin-bottom: 20px;">
+        <a th:href="@{/taikhoan/admin/addnhanvien}" class="btn-add">Thêm nhân viên</a>
+    </div>
+
+    <div class="grid-container">
+        <div class="grid-item" th:each="nv : ${listNhanVien}">
+            <img th:src="${nv.avatarUrl}" width="150" height="150" />
+            <p><strong>Mã NV:</strong> <span th:text="${nv.manv}"></span></p>
+            <p><strong>Họ tên:</strong> <span th:text="${nv.hoten}"></span></p>
+            <p><strong>SĐT:</strong> <span th:text="${nv.sdt}"></span></p>
+            <p><strong>Ngày vào làm:</strong> <span th:text="${nv.ngayvaolam}"></span></p>
+
+            <!-- Nút Sửa -->
+            <div class="action-buttons">
+    			<form th:action="@{'/taikhoan/admin/updatenhanvien/' + ${nv.manv}}" method="get" style="display: inline;">
+        			<input type="hidden" name="id" th:value="${nv.manv}" />
+        			<button type="submit" class="btn-edit">Sửa</button>
+    			</form>
+
+    			<button th:onclick="'deleteNhanVien(\'' + ${nv.manv} + '\', this)'" class="btn-delete">Xóa</button>
+
+			</div>
+        </div>
+    </div>
+
+    <div class="back-link-wrapper">
+        <a th:href="@{/taikhoan/admin}" class="back-link">Quay về trang quản trị viên</a>
+    </div>
+    <script th:src="@{/js/admin/xoanhanvien.js}"></script>
 </body>
 </html>

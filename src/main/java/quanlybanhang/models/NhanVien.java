@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="nhanvien")
 public class NhanVien {
@@ -20,6 +22,7 @@ public class NhanVien {
 	@Column(name="SoDT")
 	private String sdt;
 	@Column(name="NgayVL")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate ngayvaolam;
 	@Transient
 	private String avatarUrl;

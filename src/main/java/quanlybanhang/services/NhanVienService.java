@@ -12,4 +12,5 @@ public interface NhanVienService {
 	public Optional<NhanVien> findByMaNV(long manv);
 	public Optional<NhanVien> findByHoten(String hoten );
 	public void save(NhanVien nhanvien);
+	public boolean deleteByManv(long manv);
 }

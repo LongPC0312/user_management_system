@@ -22,8 +22,8 @@
           <ul id="employee-dropdown" class="dropdown-menu">
             <li><a th:href="@{/taikhoan/admin/addnhanvien}" >➕ Thêm mới</a></li>
             <li><a th:href="@{/taikhoan/admin/viewnhanvien}" >📋 Danh sách</a></li>
-            <li><a href="#" onclick="loadCRUD('employee', 'update')">✏️ Cập nhật</a></li>
-            <li><a href="#" onclick="loadCRUD('employee', 'delete')">🗑️ Xóa</a></li>
+            <li><a th:href="@{/taikhoan/admin/updatenhanvien}" onclick="loadCRUD('employee', 'update')">✏️ Cập nhật</a></li>
+            
           </ul>
         </li>
 
@@ -37,7 +37,7 @@
             <li><a href="#" onclick="loadCRUD('customer', 'create')">➕ Thêm mới</a></li>
             <li><a href="#" onclick="loadCRUD('customer', 'read')">📋 Danh sách</a></li>
             <li><a href="#" onclick="loadCRUD('customer', 'update')">✏️ Cập nhật</a></li>
-            <li><a href="#" onclick="loadCRUD('customer', 'delete')">🗑️ Xóa</a></li>
+            
           </ul>
         </li>
 
@@ -51,7 +51,7 @@
             <li><a href="#" onclick="loadCRUD('product', 'create')">➕ Thêm mới</a></li>
             <li><a href="#" onclick="loadCRUD('product', 'read')">📋 Danh sách</a></li>
             <li><a href="#" onclick="loadCRUD('product', 'update')">✏️ Cập nhật</a></li>
-            <li><a href="#" onclick="loadCRUD('product', 'delete')">🗑️ Xóa</a></li>
+            
           </ul>
         </li>
 
@@ -65,7 +65,7 @@
             <li><a href="#" onclick="loadCRUD('invoice', 'create')">➕ Thêm mới</a></li>
             <li><a href="#" onclick="loadCRUD('invoice', 'read')">📋 Danh sách</a></li>
             <li><a href="#" onclick="loadCRUD('invoice', 'update')">✏️ Cập nhật</a></li>
-            <li><a href="#" onclick="loadCRUD('invoice', 'delete')">🗑️ Xóa</a></li>
+            
           </ul>
         </li>
       </ul>

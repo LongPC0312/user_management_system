@@ -6,21 +6,28 @@
     <link rel="stylesheet" th:href="@{/css/admin/addnhanvien.css}">
 </head>
 <body>
-    <div class="container">
-        <h2>Thêm Nhân Viên Mới</h2>
-        <form onsubmit="event.preventDefault(); addNhanVien();" th:object="${nhanVien}">
-            <label for="hoten">Họ tên:</label>
-            <input type="text" id="hoten" th:field="*{hoten}" required>
+    <div class="form-container">
+        <h1>Thêm Nhân Viên</h1>
 
-            <label for="sdt">Số điện thoại:</label>
-            <input type="text" id="sdt" th:field="*{sdt}" required>
-
-            <label for="ngayvaolam">Ngày vào làm:</label>
-            <input type="date" id="ngayvaolam" th:field="*{ngayvaolam}" required>
-
-            <button type="submit">Thêm nhân viên</button>
-            <a href="/admin/nhanvien" class="back-link">Quay lại danh sách</a>
+        <form onsubmit="event.preventDefault(); addNhanVien()">
+            <div class="form-group">
+                <label for="hoten">Họ tên:</label>
+                <input type="text" id="hoten" name="hoten" required>
+            </div>
+            <div class="form-group">
+                <label for="sdt">SĐT:</label>
+                <input type="text" id="sdt" name="sdt" required>
+            </div>
+            <div class="form-group">
+                <label for="ngayvaolam">Ngày vào làm:</label>
+                <input type="date" id="ngayvaolam" name="ngayvaolam" required>
+            </div>
+            <button type="submit">Thêm Nhân Viên</button>
         </form>
+
+        <div class="back-link-wrapper">
+            <a th:href="@{/taikhoan/admin}" class="back-link">Quay về trang quản lý</a>
+        </div>
     </div>
     <script th:src="@{/js/admin/addnhanvien.js}"></script>
 </body>

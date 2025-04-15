@@ -37,4 +37,14 @@ public class NhanVienServiceImpl implements NhanVienService{
 		nhanvienrepository.save(nhanvien);
 		
 	}
+
+	@Override
+	public boolean deleteByManv(long manv) {
+		 Optional<NhanVien> nhanvien = nhanvienrepository.findById(manv);
+		    if (nhanvien.isPresent()) {
+		        nhanvienrepository.delete(nhanvien.get());
+		        return true;
+		    }
+		    return false;
+	}
 }
