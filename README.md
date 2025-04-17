@@ -1,37 +1,33 @@
-# 📦 Sale Manager
+# Sale Manager - Quản Lý Nhân Viên
 
-**Sale Manager** là một ứng dụng quản lý bán hàng được xây dựng bằng Spring Boot. Ứng dụng hỗ trợ quản lý nhân viên, sản phẩm, đơn hàng và khách hàng, giúp doanh nghiệp theo dõi và điều hành hoạt động kinh doanh một cách hiệu quả.
+Dự án **Sale Manager** là một hệ thống quản lý nhân viên được xây dựng bằng **Spring Boot**, tích hợp Thymeleaf cho giao diện người dùng. Dự án này bao gồm các chức năng quản lý tài khoản và nhân viên dành cho admin.
 
----
+## 🚀 Tính năng chính
 
-## 🚀 Tính năng
+- ✅ Thêm nhân viên
+- ✏️ Sửa thông tin nhân viên
+- ❌ Xóa nhân viên
+- 🔐 Đăng nhập phân quyền (admin)
 
-- Quản lý thông tin nhân viên
-- Quản lý sản phẩm và tồn kho
-- Quản lý đơn hàng và khách hàng
-- Giao diện người dùng thân thiện với Thymeleaf
-- API RESTful cho các chức năng chính
+## 👤 Tài khoản đăng nhập mẫu
 
----
+| Tên đăng nhập | Mật khẩu |
+|---------------|----------|
+| `long`        | `123`    |
 
-## 🛠️ Công nghệ sử dụng
+## 📂 Cấu trúc thư mục chính
 
-- **Java 17**
-- **Spring Boot 3.x**
-- **Spring MVC**
-- **Spring Data JPA**
-- **Thymeleaf**
-- **MySQL**
-- **Maven**
 
----
+## 🛠 Công nghệ sử dụng
 
-## ⚙️ Cài đặt
+- Java 17
+- Spring Boot
+- Thymeleaf
+- HTML/CSS/JS
+- MySQL
 
-### 1. Clone dự án
+## 📦 Cài đặt và chạy dự án
 
-```bash
-git clone https://github.com/LongPC0312/sale_manager.git
-cd sale_manager
-"# sale_manager" 
-"# sale_manager" 
+1. Clone repo về:
+   ```bash
+   git clone https://github.com/your-username/sale-manager.git
