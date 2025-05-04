@@ -17,13 +17,17 @@ public class NhanVien {
 	@Id
 	@Column(name="MaNV")
 	private long manv;
+	
 	@Column(name="HTen")
 	private String hoten;
+	
 	@Column(name="SoDT")
 	private String sdt;
+	
 	@Column(name="NgayVL")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate ngayvaolam;
+	
 	@Transient
 	private String avatarUrl;
 	

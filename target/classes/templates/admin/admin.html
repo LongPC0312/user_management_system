@@ -32,8 +32,8 @@
             <i class="dropdown-icon fas fa-chevron-down"></i>
           </a>
           <ul id="customer-dropdown" class="dropdown-menu">
-            <li><a href="#" onclick="loadCRUD('customer', 'create')">➕ Thêm mới</a></li>
-            <li><a href="#" onclick="loadCRUD('customer', 'read')">📋 Danh sách</a></li>           
+            <li><a th:href="@{/taikhoan/admin/addkhachhang}" onclick="loadCRUD('customer', 'create')">➕ Thêm mới</a></li>
+            <li><a th:href="@{/taikhoan/admin/viewkhachhang}" onclick="loadCRUD('customer', 'read')">📋 Danh sách</a></li>           
           </ul>
         </li>
 

@@ -28,7 +28,7 @@
         			<button type="submit" class="btn-edit">Sửa</button>
     			</form>
 
-    			<button th:onclick="'deleteNhanVien(\'' + ${nv.manv} + '\', this)'" class="btn-delete">Xóa</button>
+    			<button th:onclick="|deleteNhanVien('${nv.manv}', this)|" class="btn-delete">Xóa</button>
 
 			</div>
         </div>

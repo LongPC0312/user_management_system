@@ -1,4 +1,4 @@
-function login(){
+async function login(){
 	let username = document.getElementById("username").value;
 	let password =document.getElementById("password").value;
 	if(!username){
@@ -9,7 +9,7 @@ function login(){
 		alert("Vui lòng nhập mật khẩu");
 		return;
 	}
-	fetch("http://localhost:8080/taikhoan/dangnhap",{
+	fetch("http://localhost:8080/api/login",{
 		method: "POST",
 		headers: {"Content-Type":"application/json"},
 		body: JSON.stringify({username:username, password:password})

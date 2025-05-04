@@ -2,65 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Trang Nhân Viên</title>
+    <title>Bảng điều khiển Nhân viên</title>
     <link rel="stylesheet" th:href="@{/css/nhanvien/nhanvien.css}">
 </head>
 <body>
-<div class="dashboard">
-    <h1>Trang Nhân Viên</h1>
-
-    <a th:href="@{/logout}" class="btn1">Đăng xuất</a>
-
-    <!-- Bảng danh sách khách hàng -->
-    <h2>Danh sách khách hàng</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Mã KH</th>
-                <th>Họ tên</th>
-                <th>Địa chỉ</th>
-                <th>SĐT</th>
-                <th>Ngày sinh</th>
-                <th>Ngày đăng ký</th>
-                <th>Doanh số</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="kh : ${listKhachHang}">
-                <td th:text="${kh.maKH}"></td>
-                <td th:text="${kh.hTen}"></td>
-                <td th:text="${kh.dchi}"></td>
-                <td th:text="${kh.sdt}"></td>
-                <td th:text="${kh.ngaySinh}"></td>
-                <td th:text="${kh.ngayDK}"></td>
-                <td th:text="${kh.doanhSo}"></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- Bảng danh sách sản phẩm -->
-    <h2>Danh sách sản phẩm</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Mã SP</th>
-                <th>Tên SP</th>
-                <th>Số lượng</th>
-                <th>Nơi sản xuất</th>
-                <th>Giá</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="sp : ${listSanPham}">
-                <td th:text="${sp.maSP}"></td>
-                <td th:text="${sp.tenSP}"></td>
-                <td th:text="${sp.sl}"></td>
-                <td th:text="${sp.noiSanXuat}"></td>
-                <td th:text="${sp.gia}"></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<script th:src="@{/js/nhanvien/nhanvien.js}"></script>
+    <div class="container">
+        <h1>Chào mừng, Nhân viên!</h1>
+        <ul class="menu">
+            <li><a th:href="@{/nhanvien/hoadon}">Xem / Tạo hóa đơn</a></li>
+            <li><a th:href="@{/nhanvien/khachhang}">Xem danh sách khách hàng</a></li>
+            <li><a th:href="@{/nhanvien/sanpham}">Xem thông tin sản phẩm</a></li>
+        </ul>
+    </div>
 </body>
 </html>

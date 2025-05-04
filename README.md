@@ -1,13 +1,15 @@
-# Sale Manager - Quản Lý Nhân Viên
+# User Management System - Hệ thống quản lý người dùng
 
-Dự án **Sale Manager** là một hệ thống quản lý nhân viên được xây dựng bằng **Spring Boot**, tích hợp Thymeleaf cho giao diện người dùng. Dự án này bao gồm các chức năng quản lý tài khoản và nhân viên dành cho admin.
+Dự án **User Management System** là một hệ thống quản lý người dùng được xây dựng bằng **Spring Boot**, tích hợp Thymeleaf cho giao diện người dùng. Dự án này bao gồm các chức năng quản lý tài khoản và nhân viên dành cho admin.
 
 ## 🚀 Tính năng chính
 
-- ✅ Thêm nhân viên
-- ✏️ Sửa thông tin nhân viên
-- ❌ Xóa nhân viên
-- 🔐 Đăng nhập phân quyền (admin)
+Đăng nhập phân quyền (admin)
+-  Thêm nhân viên/ khách hàng
+-  Sửa thông tin nhân viên/ khách hàng
+-  Xóa nhân viên/ khách hàng
+-  Xem nhân viên/ khách hàng
+
 
 ## 👤 Tài khoản đăng nhập mẫu
 
@@ -25,9 +27,10 @@ Dự án **Sale Manager** là một hệ thống quản lý nhân viên được
 - Thymeleaf
 - HTML/CSS/JS
 - MySQL
-
+- Spring JPA
+- Spring Security
 ## 📦 Cài đặt và chạy dự án
 
 1. Clone repo về:
    ```bash
-   git clone https://github.com/your-username/sale-manager.git
+   git clone https://github.com/your-username/user_management_system.git

@@ -39,6 +39,11 @@
 		  <groupId>org.springframework.boot</groupId>
 		  <artifactId>spring-boot-starter-thymeleaf</artifactId>		
 	  </dependency>
+	  <!-- Spring secutiry -->
+	  <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
 	  <!-- MySQL Driver (Kết nối MySQL) -->
 	  <dependency>
 		  <groupId>mysql</groupId>

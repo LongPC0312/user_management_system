@@ -19,12 +19,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import quanlybanhang.models.KhachHang;
 import quanlybanhang.models.NhanVien;
+import quanlybanhang.services.KhachHangService;
 import quanlybanhang.services.NhanVienService;
 
 @Controller
 @RequestMapping("/taikhoan")
 public class AdminController {
+	// Nhanvien 
 	@Autowired NhanVienService nhanvienservice;
 	@GetMapping("/admin")
 	public String admin() {
@@ -111,6 +114,87 @@ public class AdminController {
 	        response.put("success", false);
 	        response.put("message", "Lỗi server: " + e.getMessage());
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
+	    }
+	}
+	
+	// ---------------------------------------------------------------------------------------------
+	// KhachHang
+	@Autowired KhachHangService khachhangservice;
+	@GetMapping("/admin/viewkhachhang")
+	public String viewKhachHang(Model model) {
+		model.addAttribute("listKhachHang", khachhangservice.findAll());
+		return "admin/viewkhachhang";
+	}
+	
+	@GetMapping("/admin/addkhachhang")
+	public String addKhachHang() {
+		return "admin/addkhachhang";
+	}
+	
+	@GetMapping("/admin/updatekhachhang/{makh}")
+	public String updateKhachHang(@PathVariable("makh") long makh, Model model) {
+		Optional<KhachHang> khachhang = khachhangservice.findByMakh(makh);
+		if(khachhang.isPresent()){
+			model.addAttribute("khachhang", khachhang.get());	
+		}
+		else {
+			model.addAttribute("error", "Nhân viên không tồn tại");
+		}
+		return "admin/updatekhachhang";
+	}
+	
+	@PostMapping("/admin/addkhachhang")
+	@ResponseBody
+	public Map<String, Object> themKhachHang(@RequestBody KhachHang khachhang){
+		Map<String, Object> response = new HashMap<>();
+		try {
+			khachhangservice.save(khachhang);
+			response.put("success", true);
+			response.put("redirectUrl", "/taikhoan/admin/viewkhachhang");
+		}
+		catch(Exception e){
+			response.put("success", false);
+			response.put("message", e.getMessage());
+		}
+		return response;
+	}
+	
+	@PutMapping("/admin/updatekhachhang/{makh}")
+	@ResponseBody
+	public Map<String, Object> capNhapKhachHang(@PathVariable("makh") long makh, @RequestBody KhachHang khachhang){
+		Map<String, Object> response = new HashMap<>();
+		try {
+			khachhang.setMakh(makh);
+			khachhangservice.save(khachhang);
+			response.put("success", true);
+			response.put("redirectUrl", "/taikhoan/admin/viewkhachhang");
+			}
+		catch(Exception e){
+			response.put("success", false);
+			response.put("message", e.getMessage());
+		}
+		return response;
+	}
+	
+	@DeleteMapping("/admin/deletekhachhang/{makh}")
+	@ResponseBody
+	public Map<String, Object> deleteKhachHang(@PathVariable long makh ){
+		Map<String, Object> response = new HashMap<>();
+		boolean delete = khachhangservice.deleteByMakh(makh);
+		try {
+		if(delete) {
+			response.put("success", true);
+			response.put("message", "Xóa khách hàng thành công");
+		}
+		else {
+			response.put("success", false);
+			response.put("message", "Có lỗi khi xóa khách hàng");
+		}
+		return response;
+		}
+		catch (Exception e) {
+	        e.printStackTrace(); // In lỗi ra console để dễ debug
+	        return response;
 	    }
 	}
 }
