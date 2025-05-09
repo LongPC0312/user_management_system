@@ -31,12 +31,20 @@ public class SecurityConfig {
                 .requestMatchers(
                     new AntPathRequestMatcher("/taikhoan/dangnhap"),
                     new AntPathRequestMatcher("/taikhoan/dangky"),
-                    new AntPathRequestMatcher("/api/**"),
                     new AntPathRequestMatcher("/css/**")
                 ).permitAll()
-                .requestMatchers(new AntPathRequestMatcher("/taikhoan/admin/**")).permitAll()    //hasRole("ADMIN")
-                .requestMatchers(new AntPathRequestMatcher("/taikhoan/nhanvien/**")).hasRole("NHANVIEN")
-                .requestMatchers(new AntPathRequestMatcher("/taikhoan/khachhang/**")).hasRole("KHACHHANG")
+                .requestMatchers(
+                    new AntPathRequestMatcher("/taikhoan/admin/viewkhachhang")
+                ).hasAnyRole("ADMIN", "NHANVIEN")
+                .requestMatchers(
+                	new AntPathRequestMatcher("/taikhoan/admin/**")
+                ).hasRole("ADMIN")    //hasRole("ADMIN")
+                .requestMatchers(
+                	new AntPathRequestMatcher("/taikhoan/nhanvien/**")
+                ).hasRole("NHANVIEN")
+                .requestMatchers(
+                	new AntPathRequestMatcher("/taikhoan/khachhang/**")
+                ).hasRole("KHACHHANG")
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
@@ -48,7 +56,9 @@ public class SecurityConfig {
                 )
                 .logout(logout -> logout
                     .logoutUrl("/logout") // URL logout
-                    .logoutSuccessUrl("/taikhoan/dangnhap?logout=true") // Sau khi logout thành công, quay lại trang đăng nhập
+                    .logoutSuccessUrl("/taikhoan/dangnhap?logout=true") 
+                    .invalidateHttpSession(true) // Hủy session hiện tại
+                    .deleteCookies("JSESSIONID") // Sau khi logout thành công, quay lại trang đăng nhập
                     .permitAll() // Cho phép tất cả người dùng logout
                 );
 

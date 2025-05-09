@@ -35,25 +35,6 @@ public class TaiKhoanController {
 		model.addAttribute("taikhoan", new TaiKhoan());
 		return "taikhoan/dangky";
 	}
-		
-	@PostMapping("/dangnhap")
-	@ResponseBody  // ✅ Trả về JSON thay vì chuyển trang
-	public Map<String, Object> kiemTraDangNhap(@RequestBody Map<String, String> request) {
-	    String username = request.get("username");
-	    String password = request.get("password");
-
-	    Optional<TaiKhoan> taikhoan = taikhoanservice.kiemTraDangNhap(username, password);
-
-	    Map<String, Object> response = new HashMap<>();
-	    if (taikhoan.isPresent()) {
-	        response.put("success", true);
-	        response.put("redirectUrl", "/taikhoan/admin");
-	    } else {
-	        response.put("success", false);
-	        response.put("error", "Sai tài khoản hoặc mật khẩu");
-	    }
-	    return response;
-	}
 	
 	@PostMapping("/dangky")
 	@ResponseBody
