@@ -8,12 +8,14 @@
 <body>
     <div class="container">
         <h1>Xin chào, Khách hàng thân thiết!</h1>
+        <div th:if="${logoutMessage}" class="alert alert-danger" th:text="${logoutMessage}"></div>
         <ul class="menu">
             <li><a th:href="@{/khachhang/thongtin}">Thông tin tài khoản</a></li>
         </ul> 
-        <div>
-			<a th:href="@{/taikhoan/dangnhap}" class="btn1">Đăng xuất</a>
-		</div>
+        <form th:action="@{/logout}" method="post">
+    		<button type="submit" class="btn1">Đăng xuất</button>
+		</form>
+
     </div>
 </body>
 </html>

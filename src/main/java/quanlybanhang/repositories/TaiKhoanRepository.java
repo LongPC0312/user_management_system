@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import quanlybanhang.models.TaiKhoan;
 
 @Repository
-public interface TaiKhoanRepository extends JpaRepository<TaiKhoan, String>{
+public interface TaiKhoanRepository extends JpaRepository<TaiKhoan, Long>{
 
 	Optional<TaiKhoan> findUsernameByTk(String tk);
 	

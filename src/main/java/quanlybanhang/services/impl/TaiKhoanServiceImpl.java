@@ -1,5 +1,6 @@
 package quanlybanhang.services.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,15 @@ public class TaiKhoanServiceImpl implements TaiKhoanService{
 	public void save(TaiKhoan taikhoan) {
 		taikhoanrepository.save(taikhoan);
 		
+	}
+	@Override
+	public List<TaiKhoan> findAll() {
+		return taikhoanrepository.findAll();
+	}
+	@Override
+	public Optional<TaiKhoan> findById(long id) {
+		
+		return taikhoanrepository.findById(id);
 	}
 	
 }

@@ -9,7 +9,7 @@
 <body>
   <div class="dashboard">
     <h1>Quản trị hệ thống</h1>
-
+	<div th:if="${logoutMessage}" class="alert alert-danger" th:text="${logoutMessage}"></div>
     <!-- Sidebar menu -->
     <div class="sidebar">
       <ul class="nav-list">
@@ -36,40 +36,28 @@
             <li><a th:href="@{/taikhoan/admin/viewkhachhang}" onclick="loadCRUD('customer', 'read')">📋 Danh sách</a></li>           
           </ul>
         </li>
-
-        <!-- Sản phẩm -->
+		
+		<!-- Tài khoản -->
         <li class="nav-item">
-          <a href="#" class="nav-link" onclick="toggleDropdown('product-dropdown')">
-            <i class="fas fa-box-open"></i> Sản phẩm
+          <a href="#" class="nav-link" onclick="toggleDropdown('customer-dropdown')">
+            <i class="fas fa-user-friends"></i> Tài khoản
             <i class="dropdown-icon fas fa-chevron-down"></i>
           </a>
-          <ul id="product-dropdown" class="dropdown-menu">
-            <li><a href="#" onclick="loadCRUD('product', 'create')">➕ Thêm mới</a></li>
-            <li><a href="#" onclick="loadCRUD('product', 'read')">📋 Danh sách</a></li>            
+          <ul id="customer-dropdown" class="dropdown-menu">
+            <li><a th:href="@{/taikhoan/admin/viewtaikhoan}" onclick="loadCRUD('customer', 'read')">📋 Danh sách</a></li>           
           </ul>
         </li>
-
-        <!-- Hóa đơn -->
-        <li class="nav-item">
-          <a href="#" class="nav-link" onclick="toggleDropdown('invoice-dropdown')">
-            <i class="fas fa-file-invoice-dollar"></i> Hóa đơn
-            <i class="dropdown-icon fas fa-chevron-down"></i>
-          </a>
-          <ul id="invoice-dropdown" class="dropdown-menu">
-            <li><a href="#" onclick="loadCRUD('invoice', 'create')">➕ Thêm mới</a></li>
-            <li><a href="#" onclick="loadCRUD('invoice', 'read')">📋 Danh sách</a></li>           
-          </ul>
-        </li>
+    
       </ul>
     </div>
 
     <!-- Content area -->
     <div id="crud-content" class="content">
       <p>Chọn một mục trong menu để thao tác.</p>
-    </div>
+	<form th:action="@{/logout}" method="post">
+    	<button type="submit" class="btn1">Đăng xuất</button>
+	</form>
 
-    <a th:href="@{/taikhoan/dangnhap}" class="btn1">Đăng xuất</a>
-  </div>
 
   <!-- Script dropdown -->
   <script>

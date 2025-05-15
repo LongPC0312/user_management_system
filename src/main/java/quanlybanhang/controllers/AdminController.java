@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import quanlybanhang.models.KhachHang;
 import quanlybanhang.models.NhanVien;
+import quanlybanhang.models.TaiKhoan;
 import quanlybanhang.services.KhachHangService;
 import quanlybanhang.services.NhanVienService;
+import quanlybanhang.services.TaiKhoanService;
 
 @Controller
 @RequestMapping("/taikhoan")
@@ -196,5 +198,36 @@ public class AdminController {
 	        e.printStackTrace(); // In lỗi ra console để dễ debug
 	        return response;
 	    }
+	}
+	
+	// ---------------------------------------------------------------------------------------------
+	// TaiKhoan
+	@Autowired TaiKhoanService taikhoanservice;
+	@GetMapping("/admin/viewtaikhoan")
+	public String viewTaiKhoan(Model model) {
+		model.addAttribute("listTaiKhoan", taikhoanservice.findAll());
+		return "admin/viewtaikhoan";
+	}
+	
+	@PutMapping("/admin/thaydoitrangthai/{id}")
+	@ResponseBody
+	public Map<String, String> thayDoiTrangThai(@PathVariable(value = "id") long id) {
+		Optional<TaiKhoan> tk = taikhoanservice.findById(id);
+		Map<String, String> response = new HashMap<>();
+		if(tk.isEmpty()) {
+			response.put("status","false");
+			response.put("message", "không tìm thấy tài khoản");
+			return response;
+		}
+		else {
+			TaiKhoan taikhoan = tk.get();
+			boolean newtrangthai = !taikhoan.isTrangthai();
+			taikhoan.setTrangthai(newtrangthai);
+			taikhoanservice.save(taikhoan);
+			response.put("status", "success");
+		    response.put("message", newtrangthai ? "Đã mở khóa tài khoản" : "Đã khóa tài khoản");
+		    return response;
+		}
+		
 	}
 }

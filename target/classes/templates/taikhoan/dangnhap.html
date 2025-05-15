@@ -11,6 +11,7 @@
         
         <!-- Thông báo lỗi nếu có -->
         <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+        <div th:if="${status}" class="alert alert-danger" th:text="${status}"></div>
         
         <!-- Form đăng nhập -->
         <form method="POST" action="/login">  <!-- Gửi form tới /login -->

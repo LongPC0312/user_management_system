@@ -23,9 +23,19 @@ import quanlybanhang.services.TaiKhoanService;
 public class TaiKhoanController {
 	@Autowired TaiKhoanService taikhoanservice;
 	@GetMapping("/dangnhap")
-	public String dangnhap(@RequestParam(required = false) String error, Model model) {
+	public String dangnhap(
+			@RequestParam(value="error", required = false) String error, 
+			@RequestParam(value="logout", required = false) String logout, 
+			@RequestParam(value="status", required = false) String status, 
+					Model model) {
         if (error != null) {
             model.addAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
+        }
+        if (logout != null) {
+            model.addAttribute("logoutMessage", "Bạn đã đăng xuất thành công!");
+        }
+        if(status !=null) {
+        	model.addAttribute("status", "Tài khoản của bạn đã bị khóa!");
         }
 		return "taikhoan/dangnhap";
 	}

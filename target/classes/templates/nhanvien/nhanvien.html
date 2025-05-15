@@ -8,12 +8,14 @@
 <body>
     <div class="container">
         <h1>Chào mừng, Nhân viên!</h1>
+        <div th:if="${logoutMessage}" class="alert alert-danger" th:text="${logoutMessage}"></div>
         <ul class="menu">
             <li><a th:href="@{/taikhoan/admin/viewkhachhang}">Xem danh sách khách hàng</a></li>
         </ul>
-        <div>
-			<a th:href="@{/taikhoan/dangnhap}" class="btn1">Đăng xuất</a>
-		</div>
+        <form th:action="@{/logout}" method="post">
+   	 		<button type="submit" class="btn1">Đăng xuất</button>
+		</form>
+
     </div>
 </body>
 </html>

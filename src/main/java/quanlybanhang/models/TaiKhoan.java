@@ -11,12 +11,18 @@ public class TaiKhoan {
 	@Id
 	@Column(name="ID")
 	private long id;
+	
 	@Column(name="TK")
 	private String tk;
+	
 	@Column(name="MK")
 	private String mk;
+	
 	@Column(name="VTro")
 	private String vaitro;
+	
+	@Column(name="trang_thai")
+	private boolean trangthai = true;
 	
 	public TaiKhoan() {
 		
@@ -45,6 +51,14 @@ public class TaiKhoan {
 	}
 	public void setVaitro(String vaitro) {
 		this.vaitro = vaitro;
+	}
+
+	public boolean isTrangthai() {
+		return trangthai;
+	}
+
+	public void setTrangthai(boolean trangthai) {
+		this.trangthai = trangthai;
 	}
 	
 	

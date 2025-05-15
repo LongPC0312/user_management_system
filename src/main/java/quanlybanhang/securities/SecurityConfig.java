@@ -22,7 +22,9 @@ public class SecurityConfig {
 
     @Autowired
     private CustomSuccessHandler successHandler;
-
+    
+    @Autowired
+    private CustomAuthenticationFailureHandler failerHandler;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -51,16 +53,16 @@ public class SecurityConfig {
             		 .loginPage("/taikhoan/dangnhap")
                      .loginProcessingUrl("/login")
                      .successHandler(successHandler)  // Dùng custom success handler để phân quyền
-                     .failureUrl("/taikhoan/dangnhap?error=true")
+                     .failureHandler(failerHandler)
                      .permitAll()
-                )
-                .logout(logout -> logout
+            )
+            .logout(logout -> logout
                     .logoutUrl("/logout") // URL logout
                     .logoutSuccessUrl("/taikhoan/dangnhap?logout=true") 
                     .invalidateHttpSession(true) // Hủy session hiện tại
                     .deleteCookies("JSESSIONID") // Sau khi logout thành công, quay lại trang đăng nhập
                     .permitAll() // Cho phép tất cả người dùng logout
-                );
+             );
 
         return http.build();
     }
