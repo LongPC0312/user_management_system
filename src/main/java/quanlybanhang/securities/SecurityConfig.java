@@ -24,7 +24,7 @@ public class SecurityConfig {
     private CustomSuccessHandler successHandler;
     
     @Autowired
-    private CustomAuthenticationFailureHandler failerHandler;
+    private CustomFailureHandler failerHandler;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http

@@ -1,23 +1,18 @@
 function thayDoiTrangThai(id) {
-    fetch("/taikhoan/admin/thaydoitrangthai/" + id, {
+    fetch("http://localhost:8080/taikhoan/admin/thaydoitrangthai/" + id, {
         method: "PUT",
     })
-    .then(response => {
-    if (!response.ok) {
-        return response.json().then(err => {
-            throw new Error(err.message || "Lỗi không xác định từ server");
-        });
-    }
-    else{
-		alert("Thay đổi trạng thái thành công");
-		location.reload();
-		return response.json();
-		} // <--- cần đảm bảo backend thật sự trả JSON
-	})
-	
-    
+    .then(response => response.json())  // ← Phân tích JSON từ response
+    .then(data => {
+        if (data.status === "false") {
+            throw new Error(data.message || "Lỗi không xác định từ server");
+        } else {
+            alert(data.message || "Thay đổi trạng thái thành công");
+            location.reload();
+        }
+    })
     .catch(error => {
-        console.error("Lỗi:", error);
-        alert("Lỗi kết nối máy chủ!");
+        console.error("Lỗi:", error.message);
+        alert(error.message || "Lỗi kết nối máy chủ!");
     });
 }

@@ -152,11 +152,12 @@ public class AdminController {
 		try {
 			khachhangservice.save(khachhang);
 			response.put("success", true);
+			response.put("message", "Thêm khách hàng thành công");
 			response.put("redirectUrl", "/taikhoan/admin/viewkhachhang");
 		}
 		catch(Exception e){
 			response.put("success", false);
-			response.put("message", e.getMessage());
+			response.put("message", "Thêm khách hàng thất bại");
 		}
 		return response;
 	}
@@ -213,14 +214,19 @@ public class AdminController {
 	@ResponseBody
 	public Map<String, String> thayDoiTrangThai(@PathVariable(value = "id") long id) {
 		Optional<TaiKhoan> tk = taikhoanservice.findById(id);
+		TaiKhoan taikhoan = tk.get();
 		Map<String, String> response = new HashMap<>();
 		if(tk.isEmpty()) {
 			response.put("status","false");
 			response.put("message", "không tìm thấy tài khoản");
 			return response;
 		}
-		else {
-			TaiKhoan taikhoan = tk.get();
+		else if ("ADMIN".equalsIgnoreCase(taikhoan.getVaitro())) {
+	        response.put("status", "false");
+	        response.put("message", "Không thể thay đổi trạng thái của tài khoản ADMIN");
+	        return response;
+	    }
+		else {	
 			boolean newtrangthai = !taikhoan.isTrangthai();
 			taikhoan.setTrangthai(newtrangthai);
 			taikhoanservice.save(taikhoan);

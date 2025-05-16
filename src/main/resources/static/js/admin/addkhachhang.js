@@ -41,7 +41,7 @@ function addKhachHang(){
 	})
 	.then(data =>{
 		if(data.success){
-			alert("Thêm khách hàng thành công");
+			alert(data.message);
 			window.location.href= data.redirectUrl;
 			return;
 		}
