@@ -33,7 +33,8 @@ public class SecurityConfig {
                 .requestMatchers(
                     new AntPathRequestMatcher("/taikhoan/dangnhap"),
                     new AntPathRequestMatcher("/taikhoan/dangky"),
-                    new AntPathRequestMatcher("/css/**")
+                    new AntPathRequestMatcher("/css/**"),
+                    new AntPathRequestMatcher("/js/**")
                 ).permitAll()
                 .requestMatchers(
                     new AntPathRequestMatcher("/taikhoan/admin/viewkhachhang")

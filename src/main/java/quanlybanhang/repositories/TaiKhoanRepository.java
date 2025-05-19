@@ -10,6 +10,6 @@ import quanlybanhang.models.TaiKhoan;
 @Repository
 public interface TaiKhoanRepository extends JpaRepository<TaiKhoan, Long>{
 
-	Optional<TaiKhoan> findUsernameByTk(String tk);
+	Optional<TaiKhoan> findByTk(String tk);
 	
 }

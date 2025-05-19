@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,31 +51,41 @@ public class TaiKhoanController {
 	
 	@PostMapping("/dangky")
 	@ResponseBody
-	public Map<String, Object> dangky(@RequestBody TaiKhoanDto dto) {
+	public Map<String, Object> dangky(@Valid  @RequestBody TaiKhoanDto dto, BindingResult bindingResult) {
 		Map<String, Object> response = new HashMap<>();
+		if (bindingResult.hasErrors()) {
+	        response.put("success", false);
+	        response.put("message", bindingResult.getFieldError().getDefaultMessage());
+	        return response;
+	    }
 		try {
 			Optional<TaiKhoan> existingTaiKhoan = taikhoanservice.findByUserName(dto.getTk());
 			if(existingTaiKhoan.isPresent()) {
 				response.put("success", false);
-				response.put("error", "tài khoản đã tồn tại");
+				response.put("message", "tài khoản đã tồn tại");
 				return response;
 			}
 			
+			else{
 			TaiKhoan newtaikhoan = new TaiKhoan();
 			newtaikhoan.setTk(dto.getTk());
 			newtaikhoan.setMk(dto.getMk());
 			newtaikhoan.setVaitro(dto.getVaitro());
 			taikhoanservice.save(newtaikhoan);
 			response.put("success", true);
+			response.put("message", "Tạo tài khoản thành công");
 			response.put("redirectUrl", "/taikhoan/dangnhap");
+			return response;
+			}
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 			response.put("success", false);
-			response.put("error", "Có lỗi xảy ra khi tạo tài khoản");
+			response.put("message", "Có sự cố xảy ra ở server");
+			return response;	
 		}
 		
-		return response;	
+		
 	}
 }
 	

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm Nhân Viên</title>
+    <link rel="stylesheet" th:href="@{/css/admin/addnhanvien.css}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Thêm Nhân Viên</h1>
+
+        <form onsubmit="event.preventDefault(); addNhanVien()">
+            <div class="form-group">
+                <label for="hoten">Họ tên:</label>
+                <input type="text" id="hoten" name="hoten" required>
+            </div>
+            <div class="form-group">
+                <label for="sdt">SĐT:</label>
+                <input type="text" id="sdt" name="sdt" required>
+            </div>
+            <div class="form-group">
+                <label for="ngayvaolam">Ngày vào làm:</label>
+                <input type="date" id="ngayvaolam" name="ngayvaolam" required>
+            </div>
+            <button type="submit">Thêm Nhân Viên</button>
+        </form>
+
+        <div class="back-link-wrapper">
+            <a th:href="@{/taikhoan/admin}" class="back-link">Quay về trang quản lý</a>
+        </div>
+    </div>
+    <script th:src="@{/js/admin/addnhanvien.js}"></script>
+</body>
+</html>

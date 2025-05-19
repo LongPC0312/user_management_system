@@ -14,7 +14,7 @@ public class UserDetailsServiceImpl implements UserDetailsService{
 	@Autowired TaiKhoanRepository taikhoanrepository;
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		TaiKhoan taikhoan = taikhoanrepository.findUsernameByTk(username)
+		TaiKhoan taikhoan = taikhoanrepository.findByTk(username)
 				.orElseThrow(() -> new UsernameNotFoundException("Không tìm thấy tài khoản" + username));
 		return new CustomUserDetails(taikhoan);
 	}

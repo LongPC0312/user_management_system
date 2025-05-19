@@ -15,7 +15,7 @@ public class TaiKhoanServiceImpl implements TaiKhoanService{
 	@Autowired TaiKhoanRepository taikhoanrepository;
 	@Override
 	public Optional<TaiKhoan> kiemTraDangNhap(String tk, String mk) {
-		Optional<TaiKhoan> taikhoan = taikhoanrepository.findUsernameByTk(tk);
+		Optional<TaiKhoan> taikhoan = taikhoanrepository.findByTk(tk);
 		if(taikhoan.isPresent() && taikhoan.get().getMk().equals(mk)) {
 			return taikhoan;
 		}
@@ -23,7 +23,7 @@ public class TaiKhoanServiceImpl implements TaiKhoanService{
 	}
 	@Override
 	public Optional<TaiKhoan> findByUserName(String tk) {
-		return taikhoanrepository.findUsernameByTk(tk);
+		return taikhoanrepository.findByTk(tk);
 	}
 	@Override
 	public void save(TaiKhoan taikhoan) {

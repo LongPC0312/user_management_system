@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(to right, #74ebd5, #ACB6E5);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.register-container h2 {
+    color: #333;
+    margin-bottom: 24px;
+    font-weight: 600;
+}
+
+.register-container input,
+.register-container select {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-container input:focus,
+.register-container select:focus {
+    border-color: #5c9ded;
+    box-shadow: 0 0 5px rgba(92, 157, 237, 0.5);
+    outline: none;
+}
+
+.register-container button {
+    width: 100%;
+    padding: 14px;
+    background-color: #5c9ded;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-container button:hover {
+    background-color: #417cd1;
+}
+
+.note {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #444;
+}
+
+.note a {
+    color: #5c9ded;
+    text-decoration: none;
+}
+
+.note a:hover {
+    text-decoration: underline;
+    color:#ff9f43;
+}
